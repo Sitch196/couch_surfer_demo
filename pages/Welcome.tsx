@@ -1,13 +1,17 @@
 import Link from "next/link";
 import Image from "next/image";
+import longlogo from "../assets/longlogo.png";
 import hero from "../assets/heroimage.jpg";
 export function Welcome() {
   return (
     <div className="flex flex-col min-h-screen">
       <header className="relative h-[500px] lg:h-[700px] ">
+        <div className="absolute top-4 left-4 z-50">
+          <Image src={longlogo} alt="Logo" width={250} height={50} />
+        </div>
         <Image
           alt="Cozy living room"
-          className="absolute inset-0 object-cover w-full h-full grayscale opacity-60"
+          className="absolute inset-0 object-cover w-full h-full grayscale opacity-45 "
           height={700}
           src={hero}
         />
@@ -29,7 +33,7 @@ export function Welcome() {
             </Link>
             <Link
               className="inline-flex items-center justify-center px-6 py-3 text-base font-bold rounded-md border border-white hover:bg-white hover:text-black"
-              href="#"
+              href="/auth"
             >
               Log In
             </Link>
