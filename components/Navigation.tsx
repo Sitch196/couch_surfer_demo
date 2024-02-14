@@ -13,18 +13,19 @@ export function Navigation({ isAuthenticated }: userauth) {
     <nav className="absolute top-4 left-4 right-4 flex items-center justify-between">
       <div>
         <Image src={longlogo} alt="Logo" width={250} height={50} />
-        {isAuthenticated ?? <UserButton />}
-      </div>
-      <div className="flex items-center">
-        {!isAuthenticated && (
-          <>
+        {isAuthenticated ? (
+          <div className="absolute top-4 right-4 cursor-pointer z-10 ">
+            <UserButton afterSignOutUrl="/" />
+          </div>
+        ) : (
+          <div className="flex items-center absolute top-4 right-4 cursor-pointer z-10">
             <div className="mr-4 inline-flex items-center justify-center px-6 py-3 text-base font-medium text-black bg-white rounded-md hover:bg-gray-100">
               Sign Up
             </div>
             <div className="inline-flex items-center justify-center px-6 py-3 text-base font-bold rounded-md border border-white hover:bg-white hover:text-black">
               <SignInButton mode="modal" />
             </div>
-          </>
+          </div>
         )}
       </div>
     </nav>

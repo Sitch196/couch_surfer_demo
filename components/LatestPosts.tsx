@@ -1,5 +1,3 @@
-// LatestPosts.js
-
 export function LatestPosts() {
   return (
     <section className="py-12 px-4">
@@ -19,7 +17,7 @@ export function LatestPosts() {
                   A cozy and affordable apartment in the heart of New York.
                   Close to subway stations and popular tourist attractions.
                 </p>
-                <button className="mt-4 border border-white py-2">
+                <button className="mt-4 border border-white py-2 hover:bg-white hover:text-black">
                   View More
                 </button>
               </div>
@@ -36,7 +34,7 @@ export function LatestPosts() {
                   A sunny room in a friendly neighborhood. Close to parks,
                   shops, and a short ride to downtown.
                 </p>
-                <button className="mt-4  border border-white py-2">
+                <button className="mt-4 border border-white py-2 hover:bg-white hover:text-black">
                   View More
                 </button>
               </div>
@@ -53,7 +51,7 @@ export function LatestPosts() {
                   A spacious loft in Berlin's hippest district. Plenty of cafes,
                   bars, and galleries nearby.
                 </p>
-                <button className="mt-4  border border-white py-2 ">
+                <button className="mt-4 border border-white py-2 hover:bg-white hover:text-black">
                   View More
                 </button>
               </div>
