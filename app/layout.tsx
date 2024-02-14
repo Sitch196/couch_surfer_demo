@@ -17,14 +17,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body className={inter.className}>
-          {" "}
-          <link rel="icon" href="/assets/logo.png" sizes="any" />
-          <ConvexClientProvider>{children}</ConvexClientProvider>
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <body className={inter.className}>
+        {" "}
+        <link rel="icon" href="/assets/logo.png" sizes="any" />
+        <ConvexClientProvider>{children}</ConvexClientProvider>
+      </body>
+    </html>
   );
 }
