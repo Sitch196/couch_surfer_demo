@@ -1,8 +1,8 @@
 export default function NewsLetterSignUp() {
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 bg-black">
-      <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
-        <div className="space-y-3">
+    <section className="w-full py-12 md:py-24 lg:py-32 bg-black border-t border-white">
+      <div className="container flex flex-col items-center justify-center gap-4 px-4 text-center md:px-6">
+        <div className="space-y-3 text-center">
           <h2 className="text-3xl text-white font-bold tracking-tighter sm:text-4xl md:text-5xl">
             Join Our Community
           </h2>
@@ -11,14 +11,16 @@ export default function NewsLetterSignUp() {
           </p>
         </div>
         <div className="mx-auto w-full max-w-sm space-y-2">
-          <form className="flex space-x-2">
+          <form className="flex flex-col space-y-2 md:flex-row md:space-x-2">
             <input
-              className="max-w-lg flex-1 indent-2 rounded-md h-[3rem] text-black"
+              className="max-w-full md:flex-1 indent-3 rounded-md h-[3rem] text-black"
               placeholder="Enter your email"
               required
               type="email"
             />
-            <button type="submit">Sign Up</button>
+            <button className="w-full md:w-auto bg-white text-black px-4 py-2 rounded-md">
+              Sign Up
+            </button>
           </form>
           <p className="text-xs text-gray-500 dark:text-gray-400">
             By signing up, you agree to our

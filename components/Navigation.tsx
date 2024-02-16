@@ -7,29 +7,27 @@ import { UserButton } from "@clerk/nextjs";
 import { useConvex } from "convex/react";
 import Link from "next/link";
 
-interface userauth {
-  isAuthenticated: boolean;
-}
 export function Navigation() {
   const isAuthenticated = useConvex();
+
   return (
-    <nav className="absolute top-4 left-4 right-4 flex items-center justify-between">
-      <div>
+    <nav className="fixed w-full p-3 flex items-center bg-transparent justify-between z-10">
+      <div className="flex w-full justify-between items-center px-2">
         <Link href="/">
           <Image
             src={longlogo}
             alt="Logo"
-            className="cursor-pointer"
-            width={320}
+            className="cursor-pointer sm:w-170 md:w-220"
+            width={300}
             height={50}
           />
         </Link>{" "}
         {isAuthenticated ? (
-          <div className="absolute top-4 right-4 cursor-pointer z-10 ">
+          <div className="cursor-pointer z-20">
             <UserButton afterSignOutUrl="/" />
           </div>
         ) : (
-          <div className="flex items-center absolute top-4 right-4 cursor-pointer z-10">
+          <div className="flex items-center absolute top-4 right-4 cursor-pointer z-20">
             <div className="mr-4 inline-flex items-center justify-center px-6 py-3 text-base font-medium text-black bg-white rounded-md hover:bg-gray-100">
               <SignUpButton />
             </div>
