@@ -18,7 +18,6 @@ export function Welcome() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Navigation isAuthenticated={isAuthenticated} />
       <Hero />
       <main className="flex-grow">
         <LatestPosts />

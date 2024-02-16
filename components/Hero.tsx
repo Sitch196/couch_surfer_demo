@@ -8,11 +8,11 @@ export function Hero() {
     <header className="relative h-[500px] lg:h-[700px]  flex flex-col justify-center items-center">
       <Image
         alt="Cozy living room"
-        className="absolute inset-0 object-cover w-full h-full grayscale opacity-35 "
+        className="absolute inset-0 object-cover w-full h-full grayscale opacity-65 mix-blend-darken "
         height={700}
         src={hero}
       />
-      <div className="text-white text-center z-10">
+      <div className="text-black text-center z-10">
         <h1 className="text-3xl lg:text-5xl font-bold">
           Welcome to Couch Surfers Tbilisi
         </h1>

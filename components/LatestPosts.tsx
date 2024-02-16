@@ -1,6 +1,6 @@
 export function LatestPosts() {
   return (
-    <section className="py-12 px-4">
+    <section className="py-12 px-4 bg-black text-white">
       <main className="flex-grow">
         <section className="py-12 px-4">
           <h2 className="text-2xl lg:text-3xl font-bold text-center">
