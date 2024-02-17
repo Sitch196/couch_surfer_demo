@@ -18,7 +18,6 @@ export const store = mutation({
     }
     return user._id;
   }
-  const { email } = user;
 
   // If it's a new identity, create a new `User`.
   return await ctx.db.insert("users", {

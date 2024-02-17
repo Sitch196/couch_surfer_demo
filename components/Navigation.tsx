@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import longlogo from "../assets/longlogo.png";
 import { SignInButton, SignUpButton } from "@clerk/clerk-react";
@@ -9,9 +9,27 @@ import Link from "next/link";
 
 export function Navigation() {
   const isAuthenticated = useConvex();
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolled = window.scrollY > 0;
+      setHasScrolled(scrolled);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <nav className="fixed w-full p-3 flex items-center bg-transparent justify-between z-10">
+    <nav
+      className={`fixed w-full p-3 flex items-center bg-transparent ${
+        hasScrolled ? "backdrop-blur-md backdrop-filter" : ""
+      } justify-between z-10`}
+    >
       <div className="flex w-full justify-between items-center px-2">
         <Link href="/">
           <Image

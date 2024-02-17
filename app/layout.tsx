@@ -20,19 +20,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/assets/logo.png" sizes="any" />
+      </head>
       <body className={inter.className}>
         {" "}
-        <link rel="icon" href="/assets/logo.png" sizes="any" />
         <ConvexClientProvider>
           <Navigation />
-
           {children}
           <Footer />
         </ConvexClientProvider>
       </body>
     </html>
   );
-}
-function useConvexAuth(): { isAuthenticated: any; isLoading: any } {
-  throw new Error("Function not implemented.");
 }
