@@ -2,6 +2,9 @@
 import { api } from "@/convex/_generated/api";
 import { useMutation } from "convex/react";
 import { useState, ChangeEvent, FormEvent } from "react";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface BookingDetails {
   title: string;
@@ -19,6 +22,7 @@ export default function Component() {
     numOfPeople: 0,
     daysOfStaying: 0,
   });
+  const router = useRouter();
   const createArticles = useMutation(api.articles.createArticle);
 
   const handleChange = (
@@ -36,8 +40,17 @@ export default function Component() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Add your submission logic here using the bookingDetails state
+
+    // Validate form fields
+    if (Object.values(bookingDetails).some((value) => !value)) {
+      // Display error toast if any field is empty
+      toast.error("Please fill in all fields.");
+      return;
+    }
+
+    // Submit the form if all fields are filled in
     createArticles(bookingDetails);
+    router.push("/");
   };
 
   return (

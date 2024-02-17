@@ -5,6 +5,8 @@ import ConvexClientProvider from "./ConvexClientProvider";
 import { ClerkProvider } from "@clerk/nextjs";
 import Footer from "@/components/Footer";
 import { Navigation } from "@/components/Navigation";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,6 +29,8 @@ export default function RootLayout({
         {" "}
         <ConvexClientProvider>
           <Navigation />
+          <ToastContainer />
+
           {children}
           <Footer />
         </ConvexClientProvider>
