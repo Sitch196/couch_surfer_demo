@@ -41,14 +41,11 @@ export default function Component() {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Validate form fields
     if (Object.values(bookingDetails).some((value) => !value)) {
-      // Display error toast if any field is empty
       toast.error("Please fill in all fields.");
       return;
     }
 
-    // Submit the form if all fields are filled in
     createArticles(bookingDetails);
     router.push("/");
   };
@@ -57,9 +54,9 @@ export default function Component() {
     <div className="flex items-center justify-center h-screen">
       <div className="w-[569px] mx-auto mt-[100px] p-6">
         <div>
-          <h2 className="text-3xl font-bold">New Booking ✔</h2>
+          <h2 className="text-3xl font-bold">New Booking ✅</h2>
           <p className="text-gray-500 dark:text-gray-400">
-            Enter the details for your new booking.
+            Enter some details about yourself and hosts will contact you soon
           </p>
         </div>
         <form className="space-y-4" onSubmit={handleSubmit}>
@@ -85,7 +82,7 @@ export default function Component() {
                   <input
                     id={key}
                     name={key}
-                    value={bookingDetails[key]}
+                    value={bookingDetails[key as keyof BookingDetails]}
                     onChange={handleChange}
                     className="border border-gray-300 outline-none dark:border-gray-700 rounded-md p-2"
                     placeholder={`Enter ${key}`}

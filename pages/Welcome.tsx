@@ -1,6 +1,5 @@
 "use client";
-import React from "react";
-import { Navigation } from "../components/Navigation";
+import React, { useState, useEffect } from "react";
 import { Hero } from "../components/Hero";
 import { LatestPosts } from "../components/LatestPosts";
 import { useConvexAuth } from "convex/react";
@@ -9,8 +8,26 @@ import NewsLetterSignUp from "@/components/NewsLetterSignUp";
 import Loading from "@/app/Loading";
 
 export function Welcome() {
-  const { isAuthenticated, isLoading } = useConvexAuth();
+  const { isLoading } = useConvexAuth();
   const store = useStoreUserEffect();
+  const [showScrollTopButton, setShowScrollTopButton] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      setShowScrollTopButton(scrollY > 200);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   if (isLoading) {
     return <Loading />;
@@ -23,6 +40,15 @@ export function Welcome() {
         <LatestPosts />
       </main>
       <NewsLetterSignUp />
+
+      {showScrollTopButton && (
+        <button
+          className="fixed bottom-8 right-8 bg-gray-800 text-white px-4 py-3 rounded-full hover:bg-white hover:text-black"
+          onClick={handleScrollToTop}
+        >
+          ↑
+        </button>
+      )}
     </div>
   );
 }

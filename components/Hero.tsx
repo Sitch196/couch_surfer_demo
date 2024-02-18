@@ -24,11 +24,11 @@ export function Hero() {
         </p>
         <div className="flex mt-4 ">
           <button className="bg-black text-white px-6 py-3 rounded-md mr-4">
-            For Guests
+            For Hosts
           </button>
           <Link href="/publish">
             <button className="bg-black text-white px-6 rounded-md py-3">
-              For Hosts
+              For Guests
             </button>
           </Link>
         </div>
