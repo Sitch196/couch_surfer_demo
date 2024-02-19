@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import ConvexClientProvider from "./ConvexClientProvider";
-import { ClerkProvider } from "@clerk/nextjs";
 import Footer from "@/components/Footer";
 import { Navigation } from "@/components/Navigation";
 import { ToastContainer } from "react-toastify";

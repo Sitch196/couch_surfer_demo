@@ -2,13 +2,13 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import longlogo from "../assets/longlogo.png";
-import { SignInButton, SignUpButton } from "@clerk/clerk-react";
+import { SignInButton, SignUpButton, useAuth } from "@clerk/clerk-react";
 import { UserButton } from "@clerk/nextjs";
 import { useConvex } from "convex/react";
 import Link from "next/link";
 
 export function Navigation() {
-  const isAuthenticated = useConvex();
+  const { isSignedIn } = useAuth();
   const [hasScrolled, setHasScrolled] = useState(false);
 
   useEffect(() => {
@@ -40,7 +40,7 @@ export function Navigation() {
             height={50}
           />
         </Link>{" "}
-        {isAuthenticated ? (
+        {isSignedIn ? (
           <div className="cursor-pointer z-20">
             <UserButton afterSignOutUrl="/" />
           </div>
@@ -49,7 +49,7 @@ export function Navigation() {
             <div className="mr-4 inline-flex items-center justify-center px-6 py-3 text-base font-medium text-black bg-white rounded-md hover:bg-gray-100">
               <SignUpButton />
             </div>
-            <div className="inline-flex items-center justify-center px-6 py-3 text-base font-bold rounded-md border border-white hover:bg-white hover:text-black">
+            <div className="mr-4 inline-flex items-center justify-center px-6 py-3 text-base font-medium text-black bg-white rounded-md hover:bg-gray-100">
               <SignInButton mode="modal" />
             </div>
           </div>

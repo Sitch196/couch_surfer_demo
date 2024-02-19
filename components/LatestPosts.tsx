@@ -1,5 +1,6 @@
 import { api } from "@/convex/_generated/api";
 import { useQuery } from "convex/react";
+import Link from "next/link";
 
 export function LatestPosts() {
   const latestPosts = useQuery(api.articles.getArticles);
@@ -14,7 +15,7 @@ export function LatestPosts() {
           </h2>
           <div className="mt-8 grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {firstThreePosts?.map((post) => (
-              <div>
+              <div key={post._id}>
                 <div className="flex flex-col">
                   <h3 className="text-lg font-semibold">{post.title}</h3>
                   <p className="mt-2 text-sm text-gray-500">
@@ -24,7 +25,7 @@ export function LatestPosts() {
                     {post.description}
                   </p>
                   <button className="mt-4 border border-white py-2 hover:bg-white hover:text-black">
-                    View More
+                    <Link href={`/posts/${post._id}`}>View More</Link>
                   </button>
                 </div>
               </div>
