@@ -1,10 +1,12 @@
 import { api } from "@/convex/_generated/api";
 import { useQuery } from "convex/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export function LatestPosts() {
   const latestPosts = useQuery(api.articles.getArticles);
   const firstThreePosts = latestPosts?.slice(0, 3);
+  const router = useRouter();
 
   return (
     <section className="py-12 px-4 bg-black text-white">
@@ -24,8 +26,11 @@ export function LatestPosts() {
                   <p className="mt-4 flex-grow overflow-hidden line-clamp-2">
                     {post.description}
                   </p>
-                  <button className="mt-4 border border-white py-2 hover:bg-white hover:text-black">
-                    <Link href={`/posts/${post._id}`}>View More</Link>
+                  <button
+                    className="mt-4 border border-white py-2 hover:bg-white hover:text-black"
+                    onClick={() => router.push(`/posts/${post._id}`)}
+                  >
+                    View More
                   </button>
                 </div>
               </div>
