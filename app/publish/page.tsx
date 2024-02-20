@@ -5,6 +5,8 @@ import { useState, ChangeEvent, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 interface BookingDetails {
   title: string;
@@ -96,9 +98,17 @@ export default function Component() {
               </div>
             ))}
           </div>
-          <button className="bg-black text-white px-4 py-2 rounded-md">
-            Submit
-          </button>
+          <div className="flex gap-4">
+            <button className="bg-black text-white px-4 py-2 rounded-md">
+              Submit
+            </button>
+            <Button
+              variant="destructive"
+              className="bg-black text-white px-4 py-2 rounded-md"
+            >
+              <Link href="/">Cancel</Link>
+            </Button>
+          </div>
         </form>
       </div>
     </div>

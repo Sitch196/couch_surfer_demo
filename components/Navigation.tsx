@@ -2,14 +2,19 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import longlogo from "../assets/longlogo.png";
-import { SignInButton, SignUpButton, useAuth } from "@clerk/clerk-react";
+import {
+  SignInButton,
+  SignUpButton,
+  useAuth,
+  useUser,
+} from "@clerk/clerk-react";
 import { UserButton } from "@clerk/nextjs";
-import { useConvex } from "convex/react";
 import Link from "next/link";
 
 export function Navigation() {
   const { isSignedIn } = useAuth();
   const [hasScrolled, setHasScrolled] = useState(false);
+  // const { user } = useUser();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,7 +23,6 @@ export function Navigation() {
     };
 
     window.addEventListener("scroll", handleScroll);
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -26,11 +30,11 @@ export function Navigation() {
 
   return (
     <nav
-      className={`fixed w-full p-3 flex items-center bg-transparent ${
+      className={`sticky top-0 w-full p-3 flex items-center bg-transparent ${
         hasScrolled ? "backdrop-blur-md backdrop-filter" : ""
       } justify-between z-10`}
     >
-      <div className="flex w-full justify-between items-center px-2">
+      <div className="flex w-full justify-between items-center px-3">
         <Link href="/">
           <Image
             src={longlogo}
