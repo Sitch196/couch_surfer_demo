@@ -31,17 +31,16 @@ export function Navigation() {
   return (
     <nav
       className={`sticky top-0 w-full p-3 flex items-center bg-transparent ${
-        hasScrolled ? "backdrop-blur-md backdrop-filter" : ""
-      } justify-between z-10`}
+        hasScrolled ? "backdrop-blur-md backdrop-filter " : ""
+      } justify-between  z-10`}
     >
       <div className="flex w-full justify-between items-center px-3">
         <Link href="/">
           <Image
             src={longlogo}
             alt="Logo"
-            className="cursor-pointer sm:w-170 md:w-220"
+            className="cursor-pointer "
             width={300}
-            height={50}
           />
         </Link>{" "}
         {isSignedIn ? (

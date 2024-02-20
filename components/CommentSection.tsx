@@ -1,13 +1,13 @@
 "use client";
 import React, { useState } from "react";
 import { Button } from "./ui/button";
+import logo from "../assets/justlogo.png";
 import { useUser } from "@clerk/clerk-react";
+import Image from "next/image";
 
 interface CommentSectionProps {
   postId: string;
 }
-
-// ... (previous imports)
 
 const CommentSection: React.FC<CommentSectionProps> = ({ postId }) => {
   const [comments, setComments] = useState<string[]>([]);
@@ -22,9 +22,8 @@ const CommentSection: React.FC<CommentSectionProps> = ({ postId }) => {
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    // Check if the pressed key is Enter and not Shift
     if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault(); // Prevents adding a new line
+      e.preventDefault();
       handleAddComment();
     }
   };
@@ -37,9 +36,11 @@ const CommentSection: React.FC<CommentSectionProps> = ({ postId }) => {
           {comments.map((comment, index) => (
             <div key={index} className="mb-2">
               <div className="flex items-center gap-4">
-                <img
-                  src={user.user?.imageUrl}
-                  className="w-12 h-12 rounded-full object-cover"
+                <Image
+                  src={user.user?.imageUrl ?? "../assets/justlogo.png"}
+                  width={40}
+                  height={40}
+                  className=" rounded-full object-cover"
                   alt="user_image"
                 />
                 <div className="flex flex-col">

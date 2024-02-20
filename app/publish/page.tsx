@@ -53,8 +53,8 @@ export default function Component() {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen">
-      <div className="w-[569px] mx-auto mt-[100px] p-6">
+    <div className="flex items-center justify-center ">
+      <div className="w-[569px] mx-auto  p-6">
         <div>
           <h2 className="text-3xl font-bold">New Booking ✅</h2>
           <p className="text-gray-500 dark:text-gray-400">

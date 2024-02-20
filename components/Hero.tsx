@@ -9,7 +9,7 @@ export function Hero() {
     <header className="relative h-[500px] lg:h-[700px]  flex flex-col justify-center items-center">
       <Image
         alt="Cozy living room"
-        className="absolute inset-0 object-cover -z-10  w-full h-full backdrop-grayscale opacity-75 mix-blend-darken "
+        className="fixed inset-0 object-cover -z-10  w-full h-full backdrop-grayscale opacity-75 mix-blend-darken "
         height={700}
         loading="lazy"
         src={hero}

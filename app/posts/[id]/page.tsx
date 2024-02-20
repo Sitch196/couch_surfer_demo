@@ -9,8 +9,6 @@ interface BlogDetailsProps {
   };
 }
 
-// ... (previous imports)
-
 export default function DetailedPage({ params }: BlogDetailsProps) {
   const post = useQuery(api.articles.getArticles);
   const targetPost = post?.filter((post) => post._id === params.id);

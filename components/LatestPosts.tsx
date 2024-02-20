@@ -1,11 +1,10 @@
 import { api } from "@/convex/_generated/api";
 import { useQuery } from "convex/react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export function LatestPosts() {
   const latestPosts = useQuery(api.articles.getArticles);
-  const firstThreePosts = latestPosts?.slice(0, 3);
+  const lastThreePosts = latestPosts?.slice(-3).reverse();
   const router = useRouter();
 
   return (
@@ -16,7 +15,7 @@ export function LatestPosts() {
             Latest Posts
           </h2>
           <div className="mt-8 grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            {firstThreePosts?.map((post) => (
+            {lastThreePosts?.map((post) => (
               <div key={post._id}>
                 <div className="flex flex-col">
                   <h3 className="text-lg font-semibold">{post.title}</h3>
