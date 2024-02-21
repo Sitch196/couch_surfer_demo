@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import longlogo from "../assets/longlogo.png";
+import shortlogo from "../assets/justlogo.png";
 import {
   SignInButton,
   SignUpButton,
@@ -14,7 +15,6 @@ import Link from "next/link";
 export function Navigation() {
   const { isSignedIn } = useAuth();
   const [hasScrolled, setHasScrolled] = useState(false);
-  // const { user } = useUser();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,8 +39,14 @@ export function Navigation() {
           <Image
             src={longlogo}
             alt="Logo"
-            className="cursor-pointer "
+            className="cursor-pointer hidden sm:inline-block"
             width={300}
+          />
+          <Image
+            src={shortlogo}
+            alt="Logo"
+            className="cursor-pointer sm:hidden"
+            width={100}
           />
         </Link>{" "}
         {isSignedIn ? (
@@ -48,11 +54,11 @@ export function Navigation() {
             <UserButton afterSignOutUrl="/" />
           </div>
         ) : (
-          <div className="flex items-center absolute top-4 right-4 cursor-pointer z-20">
-            <div className="mr-4 inline-flex items-center justify-center px-6 py-3 text-base font-medium text-black bg-white rounded-md hover:bg-gray-100">
+          <div className="flex items-center  absolute top-6 right-4 cursor-pointer z-20">
+            <div className="mr-4 inline-flex items-center justify-center px-6 py-3 text-base font-medium shadow-md bg-white text-black rounded-md hover:bg-gray-100">
               <SignUpButton />
             </div>
-            <div className="mr-4 inline-flex items-center justify-center px-6 py-3 text-base font-medium text-black bg-white rounded-md hover:bg-gray-100">
+            <div className="mr-4 inline-flex items-center justify-center px-6 py-3 text-base font-medium shadow-md bg-white text-black rounded-md hover:bg-gray-100">
               <SignInButton mode="modal" />
             </div>
           </div>
