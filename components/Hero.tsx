@@ -14,18 +14,20 @@ export function Hero() {
         loading="lazy"
         src={hero}
       />
-      <div className="flex flex-col items-center text-black text-center z-1">
+      <div className="flex flex-col items-center text-black  text-center z-1">
         <h1 className="text-3xl lg:text-5xl font-bold">
           Welcome to Couch Surfers Tbilisi
         </h1>
-        <p className="mt-4 max-w-2xl mx-auto text-lg lg:text-xl">
+        <p className="mt-4 max-w-2xl mx-auto text-lg lg:text-xl font-semibold ">
           Find a cozy place to stay or share your own. Connect with travelers
           and hosts around the world.
         </p>
         <div className="flex mt-4 ">
-          <button className="bg-black text-white px-6 py-3 rounded-md mr-4">
-            For Hosts
-          </button>
+          <Link href="/posts">
+            <button className="bg-black text-white px-6 py-3 rounded-md mr-4">
+              For Hosts
+            </button>
+          </Link>
           <Link href="/publish">
             <button className="bg-black text-white px-6 rounded-md py-3">
               For Guests

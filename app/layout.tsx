@@ -29,7 +29,6 @@ export default function RootLayout({
         <ConvexClientProvider>
           <Navigation />
           <ToastContainer />
-
           {children}
           <Footer />
         </ConvexClientProvider>

@@ -16,39 +16,64 @@ interface BookingDetails {
   daysOfStaying: number;
 }
 
+interface BookingDetail {
+  key: string;
+  label: string;
+}
+
+const bookingDetailsConfig: BookingDetail[] = [
+  { key: "title", label: "Title" },
+  { key: "fullname", label: "Full Name" },
+  { key: "description", label: "Description" },
+  { key: "numOfPeople", label: "Number of People" },
+  { key: "daysOfStaying", label: "Days of Staying" },
+];
+
 export default function Component() {
-  const [bookingDetails, setBookingDetails] = useState<BookingDetails>({
-    title: "",
-    fullname: "",
-    description: "",
-    numOfPeople: 0,
-    daysOfStaying: 0,
-  });
+  const [bookingDetails, setBookingDetails] = useState<Array<BookingDetails>>([
+    {
+      title: "",
+      fullname: "",
+      description: "",
+      numOfPeople: 0,
+      daysOfStaying: 0,
+    },
+  ]);
   const router = useRouter();
   const createArticles = useMutation(api.articles.createArticle);
 
   const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    index: number
   ) => {
     const { name, value } = e.target;
-    setBookingDetails((prevDetails) => ({
-      ...prevDetails,
-      [name]:
-        name === "numOfPeople" || name === "daysOfStaying"
-          ? parseInt(value, 10)
-          : value,
-    }));
+    setBookingDetails((prevDetails) => {
+      const newDetails = [...prevDetails];
+      newDetails[index] = {
+        ...newDetails[index],
+        [name]:
+          name === "numOfPeople" || name === "daysOfStaying"
+            ? parseInt(value, 10)
+            : value,
+      };
+      return newDetails;
+    });
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (Object.values(bookingDetails).some((value) => !value)) {
+    if (
+      bookingDetails.some((details) =>
+        Object.values(details).some((value) => !value)
+      )
+    ) {
       toast.error("Please fill in all fields.");
       return;
     }
 
-    createArticles(bookingDetails);
+    bookingDetails.forEach((details) => createArticles(details));
+    toast.success("Article has been Successfully Added");
     router.push("/");
   };
 
@@ -63,38 +88,42 @@ export default function Component() {
         </div>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div className="space-y-4">
-            {Object.keys(bookingDetails).map((key) => (
-              <div className="flex flex-col mb-4" key={key}>
-                <label
-                  htmlFor={key}
-                  className="text-sm font-medium text-gray-600"
-                >
-                  {key.charAt(0).toUpperCase() + key.slice(1)}
-                </label>
-                {key === "description" ? (
-                  <textarea
-                    id={key}
-                    name={key}
-                    value={bookingDetails[key]}
-                    onChange={handleChange}
-                    className="border border-gray-300 outline-none resize-none dark:border-gray-700 rounded-md p-2 min-h-[100px]"
-                    placeholder={`Enter ${key}`}
-                  />
-                ) : (
-                  <input
-                    id={key}
-                    name={key}
-                    value={bookingDetails[key as keyof BookingDetails]}
-                    onChange={handleChange}
-                    className="border border-gray-300 outline-none dark:border-gray-700 rounded-md p-2"
-                    placeholder={`Enter ${key}`}
-                    type={
-                      key === "numOfPeople" || key === "daysOfStaying"
-                        ? "number"
-                        : "text"
-                    }
-                  />
-                )}
+            {bookingDetails.map((details, index) => (
+              <div key={index}>
+                {bookingDetailsConfig.map(({ key, label }) => (
+                  <div className="flex flex-col mb-4" key={key}>
+                    <label
+                      htmlFor={key}
+                      className="text-sm font-medium text-gray-600"
+                    >
+                      {label}
+                    </label>
+                    {key === "description" ? (
+                      <textarea
+                        id={key}
+                        name={key}
+                        value={details[key]}
+                        onChange={(e) => handleChange(e, index)}
+                        className="border border-gray-300 outline-none resize-none dark:border-gray-700 rounded-md p-2 min-h-[100px]"
+                        placeholder={`Enter ${label}`}
+                      />
+                    ) : (
+                      <input
+                        id={key}
+                        name={key}
+                        value={details[key as keyof BookingDetails]}
+                        onChange={(e) => handleChange(e, index)}
+                        className="border border-gray-300 outline-none dark:border-gray-700 rounded-md p-2"
+                        placeholder={`Enter ${label}`}
+                        type={
+                          key === "numOfPeople" || key === "daysOfStaying"
+                            ? "number"
+                            : "text"
+                        }
+                      />
+                    )}
+                  </div>
+                ))}
               </div>
             ))}
           </div>
