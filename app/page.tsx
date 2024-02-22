@@ -5,7 +5,7 @@ import NewsLetterSignUp from "@/components/NewsLetterSignUp";
 import useStoreUserEffect from "@/hooks/useStoreUser";
 import { useConvexAuth } from "convex/react";
 import { useState, useEffect } from "react";
-import Loading from "./loading";
+import Loading from "./Loading";
 
 export default function Welcome() {
   const { isLoading } = useConvexAuth();
