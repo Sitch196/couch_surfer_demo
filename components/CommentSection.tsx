@@ -4,20 +4,28 @@ import { Button } from "./ui/button";
 import logo from "../assets/justlogo.png";
 import { useUser } from "@clerk/clerk-react";
 import Image from "next/image";
+import { useMutation, useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
 
 interface CommentSectionProps {
   postId: string;
+  author: string;
 }
 
-const CommentSection: React.FC<CommentSectionProps> = ({ postId }) => {
+const CommentSection: React.FC<CommentSectionProps> = ({ postId, author }) => {
+  const createComment = useMutation(api.comments.createComments);
+  const getComment = useQuery(api.comments.getComments);
   const [comments, setComments] = useState<string[]>([]);
   const [newComment, setNewComment] = useState("");
   const user = useUser();
+  const filteredComments =
+    getComment?.filter((comment) => comment.postID === postId) || [];
 
-  const handleAddComment = () => {
+  const handleAddComment = async () => {
     if (newComment.trim() !== "") {
       setComments((prevComments) => [...prevComments, newComment]);
       setNewComment("");
+      createComment({ comment: newComment, postID: postId, author });
     }
   };
 
@@ -33,7 +41,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({ postId }) => {
       <div className="max-h-48 overflow-y-auto">
         <h3 className="text-xl font-bold mb-2">Comments</h3>
         <div>
-          {comments.map((comment, index) => (
+          {filteredComments?.map((currentcomment, index) => (
             <div key={index} className="mb-2">
               <div className="flex items-center gap-4">
                 <Image
@@ -45,7 +53,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({ postId }) => {
                 />
                 <div className="flex flex-col">
                   <p className="font-bold">{user.user?.fullName}</p>
-                  <p className="text-sm">{comment}</p>
+                  <p className="text-sm">{currentcomment.comment}</p>
                 </div>
               </div>
             </div>

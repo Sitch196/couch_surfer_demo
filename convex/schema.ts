@@ -13,4 +13,9 @@ export default defineSchema({
     name: v.string(),
     tokenIdentifier: v.string(),
   }),
+  comments: defineTable({
+    comment: v.string(),
+    postID: v.string(),
+    author: v.string(),
+  }),
 });

@@ -37,7 +37,7 @@ export default function DetailedPage({ params }: BlogDetailsProps) {
           <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
           <p className="font-bold mb-2">Posted by {post.fullname}</p>
           <p className="text-gray-700">{post.description}</p>
-          <CommentSection postId={post._id} />
+          <CommentSection postId={post._id} author={post.fullname} />
         </div>
       ))}
     </div>

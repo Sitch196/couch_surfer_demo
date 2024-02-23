@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="flex flex-col items-center bg-black p-5">
       <div className="flex    gap-4 mb-4 ">
         <p className="text-sm text-gray-500 cursor-pointer dark:text-gray-400">
-          Terms & Conditions
+          About
         </p>
         <p className="text-sm text-gray-500 cursor-pointer dark:text-gray-400">
           Contact
