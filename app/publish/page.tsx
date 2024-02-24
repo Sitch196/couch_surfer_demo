@@ -1,12 +1,13 @@
 "use client";
 import { api } from "@/convex/_generated/api";
-import { useMutation } from "convex/react";
+import { useConvexAuth, useMutation } from "convex/react";
 import { useState, ChangeEvent, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import Loading from "../Loading";
 
 interface BookingDetails {
   title: string;
@@ -41,6 +42,9 @@ export default function Component() {
   ]);
   const router = useRouter();
   const createArticles = useMutation(api.articles.createArticle);
+  const { isLoading } = useConvexAuth();
+
+  if (isLoading) return <Loading />;
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,

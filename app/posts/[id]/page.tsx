@@ -22,7 +22,7 @@ export default function DetailedPage({ params }: BlogDetailsProps) {
       {targetPost?.map((post) => (
         <div
           key={post._id}
-          className="bg-white p-8 h-[550px] rounded-md shadow-md w-full sm:max-w-md md:max-w-lg lg:max-w-4xl max-h-screen overflow-y-auto"
+          className="bg-white p-8 sm:h-[500px] rounded-md shadow-md w-full sm:max-w-md md:max-w-lg lg:max-w-4xl max-h-screen overflow-y-auto"
         >
           <div className="flex justify-between">
             <div className="flex items-center">

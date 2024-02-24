@@ -2,55 +2,84 @@
 import city from "../../assets/city.jpg";
 import Image from "next/image";
 import { useQuery } from "convex/react";
+import { useConvexAuth } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { useRouter } from "next/navigation";
+import Loading from "../Loading";
+import { calculateRelativeTime } from "@/utils/CalculateRelativeTime";
+
+// ... (previous imports)
+
+import { useState } from "react";
+import { FiFilter } from "react-icons/fi";
 
 const Page = () => {
+  const [sortBy, setSortBy] = useState("new"); // "new" or "old" for sorting
+  const [showSortOptions, setShowSortOptions] = useState(false);
   const allPosts = useQuery(api.articles.getArticles);
+  const sortedPosts = allPosts?.sort(
+    sortBy === "new"
+      ? (a, b) => b._creationTime - a._creationTime
+      : (a, b) => a._creationTime - b._creationTime
+  );
   const router = useRouter();
+  const { isLoading } = useConvexAuth();
+
+  if (isLoading) return <Loading />;
 
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center">
       <Image
         src={city}
         alt="Background"
+        priority
         className="absolute inset-0 w-full h-full object-cover object-center z-[-1] blur-sm"
       />
 
-      <div className="relative z-10 bg-white p-8 mb-[80px] rounded-lg shadow-lg">
-        <input
-          type="text"
-          className="mb-4 p-2 border border-gray-300 rounded-md w-full"
-          placeholder="Enter text"
-        />
-        <div className="flex flex-col sm:flex-row items-center gap-4">
-          <label className="mb-2 sm:mb-0">Days of staying</label>
-          <select className="p-2 border w-full sm:w-[150px] border-gray-300 rounded-md">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5+">5+</option>
-          </select>
-          <label className="mb-2 sm:mb-0">Number of People</label>
-          <select className="p-2 border w-full sm:w-[150px] border-gray-300 rounded-md">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5+">5+</option>
-          </select>
+      <div className="mt-8 mb-4 px-2 w-full flex flex-col sm:flex-row items-center justify-between">
+        <p className="text-xl px-2 font-semibold mb-2 sm:mb-0 sm:mr-2 border-black border-l-[6px] ">
+          Take a look at all the posts here
+        </p>
+        <div className="flex items-center space-x-2">
+          <p className="text-sm font-semibold  sm:block">Sort by:</p>
+          <FiFilter
+            className="cursor-pointer"
+            onClick={() => setShowSortOptions(!showSortOptions)}
+          />
+          {showSortOptions && (
+            <div className="flex items-center space-x-2">
+              <p
+                className="cursor-pointer hover:underline"
+                onClick={() => {
+                  setSortBy("new");
+                  setShowSortOptions(false);
+                }}
+              >
+                Newer
+              </p>
+              <p
+                className="cursor-pointer hover:underline"
+                onClick={() => {
+                  setSortBy("old");
+                  setShowSortOptions(false);
+                }}
+              >
+                Older
+              </p>
+            </div>
+          )}
         </div>
       </div>
 
-      <div className="mt-8 grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        {allPosts?.map((post) => (
-          <div key={post._id} className="p-2 ">
+      <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        {sortedPosts?.map((post) => (
+          <div key={post._id} className="p-2">
             <div className="flex flex-col justify-around rounded-md p-3 h-full bg-white">
               <h3 className="text-lg font-semibold">{post.title}</h3>
               <p className="mt-2 text-sm text-gray-500">
                 Posted by {post.fullname}
               </p>
+              <p>{calculateRelativeTime(post._creationTime)}</p>
               <p className="mt-4 overflow-hidden line-clamp-2">
                 {post.description}
               </p>
