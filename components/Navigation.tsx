@@ -38,6 +38,7 @@ export function Navigation() {
         <Link href="/">
           <Image
             src={longlogo}
+            priority
             alt="Logo"
             className="cursor-pointer hidden sm:inline-block"
             width={300}

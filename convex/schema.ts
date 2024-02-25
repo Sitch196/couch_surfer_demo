@@ -8,6 +8,7 @@ export default defineSchema({
     fullname: v.string(),
     numOfPeople: v.float64(),
     title: v.string(),
+    userId: v.optional(v.string()),
   }),
   users: defineTable({
     name: v.string(),

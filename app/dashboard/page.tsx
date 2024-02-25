@@ -1,17 +1,23 @@
 "use client";
+import { useConvexAuth } from "convex/react";
 import { useState } from "react";
 import { FaUser, FaList, FaComments } from "react-icons/fa";
+import Loading from "../Loading";
+import MyProfileContent from "./DashboardContent/MyProfileContent";
+import AllPostsContent from "./DashboardContent/AllPostsContent";
+import AllCommentsContent from "./DashboardContent/AllCommentsContent";
 
 const Dashboard = () => {
   const [selectedTab, setSelectedTab] = useState("myprofile");
+  const { isLoading } = useConvexAuth();
 
   const handleTabClick = (tab: React.SetStateAction<string>) => {
     setSelectedTab(tab);
   };
+  if (isLoading) return <Loading />;
 
   return (
     <div className="h-screen bg-[whitesmoke] flex flex-col lg:flex-row">
-      {/* Aside */}
       <aside className="w-full lg:w-1/4 p-4 border shadow-md">
         <div
           className={`cursor-pointer p-2 mb-2 flex items-center gap-4
@@ -41,7 +47,6 @@ const Dashboard = () => {
           <span className="lg:inline-block ">All Comments</span>
         </div>
       </aside>
-
       <div className="flex-1 p-4 border shadow-md">
         {selectedTab === "myprofile" && <MyProfileContent />}
         {selectedTab === "allPosts" && <AllPostsContent />}
@@ -49,18 +54,6 @@ const Dashboard = () => {
       </div>
     </div>
   );
-};
-
-const MyProfileContent = () => {
-  return <div>My Profile Content</div>;
-};
-
-const AllPostsContent = () => {
-  return <div>All Posts Content</div>;
-};
-
-const AllCommentsContent = () => {
-  return <div>All Comments Content</div>;
 };
 
 export default Dashboard;

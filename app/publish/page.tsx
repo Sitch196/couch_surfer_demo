@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Loading from "../Loading";
+import { useAuth } from "@clerk/clerk-react";
 
 interface BookingDetails {
   title: string;
@@ -15,6 +16,7 @@ interface BookingDetails {
   description: string;
   numOfPeople: number;
   daysOfStaying: number;
+  userId: any;
 }
 
 interface BookingDetail {
@@ -31,6 +33,7 @@ const bookingDetailsConfig: BookingDetail[] = [
 ];
 
 export default function Component() {
+  const userId = useAuth().userId;
   const [bookingDetails, setBookingDetails] = useState<Array<BookingDetails>>([
     {
       title: "",
@@ -38,6 +41,7 @@ export default function Component() {
       description: "",
       numOfPeople: 0,
       daysOfStaying: 0,
+      userId,
     },
   ]);
   const router = useRouter();

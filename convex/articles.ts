@@ -8,6 +8,7 @@ export const createArticle = mutation({
     description: v.string(),
     numOfPeople: v.number(),
     daysOfStaying: v.number(),
+    userId: v.string(),
   },
   handler: async (ctx, args) => {
     const newArticleId = await ctx.db.insert("articles", {
@@ -16,6 +17,7 @@ export const createArticle = mutation({
       description: args.description,
       numOfPeople: args.numOfPeople,
       daysOfStaying: args.daysOfStaying,
+      userId: args.userId,
     });
     return newArticleId;
   },
