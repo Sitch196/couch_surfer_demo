@@ -7,14 +7,11 @@ import { api } from "@/convex/_generated/api";
 import { useRouter } from "next/navigation";
 import Loading from "../Loading";
 import { calculateRelativeTime } from "@/utils/CalculateRelativeTime";
-
-// ... (previous imports)
-
 import { useState } from "react";
 import { FiFilter } from "react-icons/fi";
 
 const Page = () => {
-  const [sortBy, setSortBy] = useState("new"); // "new" or "old" for sorting
+  const [sortBy, setSortBy] = useState("new");
   const [showSortOptions, setShowSortOptions] = useState(false);
   const allPosts = useQuery(api.articles.getArticles);
   const sortedPosts = allPosts?.sort(
@@ -28,7 +25,7 @@ const Page = () => {
   if (isLoading) return <Loading />;
 
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-center">
+    <div className="relative min-h-screen flex flex-col items-center ">
       <Image
         src={city}
         alt="Background"
@@ -74,7 +71,7 @@ const Page = () => {
       <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {sortedPosts?.map((post) => (
           <div key={post._id} className="p-2">
-            <div className="flex flex-col justify-around rounded-md p-3 h-full bg-white">
+            <div className="flex flex-col justify-around rounded-md p-3 h-full shadow-md bg-white">
               <h3 className="text-lg font-semibold">{post.title}</h3>
               <p className="mt-2 text-sm text-gray-500">
                 Posted by {post.fullname}
