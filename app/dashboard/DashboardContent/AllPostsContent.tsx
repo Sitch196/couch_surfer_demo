@@ -7,7 +7,6 @@ export default function AllPostsContent() {
   const currentUser = useAuth().userId;
   const myArticles = useQuery(api.articles.getArticles);
 
-  // Filter articles based on userId
   const filteredArticles = myArticles?.filter(
     (article) => article.userId === currentUser
   );

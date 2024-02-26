@@ -1,5 +1,5 @@
 "use client";
-import city from "../../assets/city.jpg";
+import city from "../../assets/city.png";
 import Image from "next/image";
 import { useQuery } from "convex/react";
 import { useConvexAuth } from "convex/react";

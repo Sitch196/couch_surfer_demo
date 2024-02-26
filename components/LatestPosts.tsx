@@ -2,7 +2,7 @@ import { api } from "@/convex/_generated/api";
 import { useQuery } from "convex/react";
 import { useRouter } from "next/navigation";
 
-export function LatestPosts() {
+export default function LatestPosts() {
   const latestPosts = useQuery(api.articles.getArticles);
   const lastThreePosts = latestPosts?.slice(-3).reverse();
   const router = useRouter();

@@ -1,11 +1,13 @@
 "use client";
-import { Hero } from "@/components/Hero";
-import { LatestPosts } from "@/components/LatestPosts";
-import NewsLetterSignUp from "@/components/NewsLetterSignUp";
-import useStoreUserEffect from "@/hooks/useStoreUser";
+import { lazy, Suspense } from "react";
 import { useConvexAuth } from "convex/react";
 import { useState, useEffect } from "react";
-import Loading from "./Loading";
+import useStoreUserEffect from "@/hooks/useStoreUser";
+
+const Hero = lazy(() => import("@/components/Hero"));
+const LatestPosts = lazy(() => import("@/components/LatestPosts"));
+const NewsLetterSignUp = lazy(() => import("@/components/NewsLetterSignUp"));
+const Loading = lazy(() => import("./Loading"));
 
 export default function Welcome() {
   const { isLoading } = useConvexAuth();

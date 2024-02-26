@@ -4,7 +4,7 @@ import Image from "next/image";
 import hero from "../assets/heroimage.jpg";
 import Link from "next/link";
 
-export function Hero() {
+export default function Hero() {
   return (
     <header className="relative h-[500px] lg:h-[700px]  flex flex-col justify-center items-center">
       <Image
