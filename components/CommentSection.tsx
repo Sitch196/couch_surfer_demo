@@ -12,6 +12,18 @@ interface CommentSectionProps {
   author: string;
 }
 
+const generateRandomId = () => {
+  const alphanumericChars =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let randomId = "";
+  for (let i = 0; i < 10; i++) {
+    randomId += alphanumericChars.charAt(
+      Math.floor(Math.random() * alphanumericChars.length)
+    );
+  }
+  return randomId;
+};
+
 const CommentSection: React.FC<CommentSectionProps> = ({ postId, author }) => {
   const createComment = useMutation(api.comments.createComments);
   const getComment = useQuery(api.comments.getComments);
@@ -23,9 +35,14 @@ const CommentSection: React.FC<CommentSectionProps> = ({ postId, author }) => {
 
   const handleAddComment = async () => {
     if (newComment.trim() !== "") {
+      const randomUserId = generateRandomId();
       setComments((prevComments) => [...prevComments, newComment]);
       setNewComment("");
-      createComment({ comment: newComment, postID: postId, author });
+      createComment({
+        comment: newComment,
+        postID: postId,
+        author: randomUserId,
+      });
     }
   };
 
@@ -45,14 +62,14 @@ const CommentSection: React.FC<CommentSectionProps> = ({ postId, author }) => {
             <div key={index} className="mb-2">
               <div className="flex items-center gap-4">
                 <Image
-                  src={user.user?.imageUrl ?? "../assets/justlogo.png"}
+                  src={logo}
                   width={40}
                   height={40}
                   className=" rounded-full object-cover"
                   alt="user_image"
                 />
                 <div className="flex flex-col">
-                  <p className="font-bold">{user.user?.fullName}</p>
+                  <p className="font-bold">User_{currentcomment.author}</p>
                   <p className="text-sm">{currentcomment.comment}</p>
                 </div>
               </div>
