@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import Loading from "../Loading";
 import { useAuth } from "@clerk/clerk-react";
 
@@ -168,12 +167,9 @@ export default function Component() {
             <button className="bg-black text-white px-4 py-2 rounded-md">
               Submit
             </button>
-            <Button
-              variant="destructive"
-              className="bg-black text-white px-4 py-2 rounded-md"
-            >
+            <button className="bg-black text-white px-4 py-2 rounded-md">
               <Link href="/">Cancel</Link>
-            </Button>
+            </button>
           </div>
         </form>
       </div>

@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import { Button } from "./ui/button";
 import logo from "../assets/justlogo.png";
 import { useUser } from "@clerk/clerk-react";
 import Image from "next/image";
@@ -86,13 +85,12 @@ const CommentSection: React.FC<CommentSectionProps> = ({ postId, author }) => {
           onChange={(e) => setNewComment(e.target.value)}
           onKeyDown={handleKeyDown}
         />
-        <Button
-          className="text-white mt-2"
-          variant="outline"
+        <button
+          className="text-white bg-black px-3 py-2 rounded-md mt-2"
           onClick={handleAddComment}
         >
           Add Comment
-        </Button>
+        </button>
       </div>
     </div>
   );
