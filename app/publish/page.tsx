@@ -55,6 +55,7 @@ export default function Component() {
     index: number
   ) => {
     const { name, value } = e.target;
+
     setBookingDetails((prevDetails) => {
       const newDetails = [...prevDetails];
       newDetails[index] = {
@@ -71,15 +72,43 @@ export default function Component() {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (
-      bookingDetails.some((details) =>
-        Object.values(details).some((value) => !value)
-      )
-    ) {
-      toast.error("Please fill in all fields.");
+    // Validation logic for all fields
+    const validationErrors: string[] = [];
+    bookingDetails.forEach((details) => {
+      if (!/^[a-zA-Z ]{5,}$/.test(details.title)) {
+        validationErrors.push(
+          `"Please enter a valid title with at least 6 characters, consisting of letters only."
+          `
+        );
+      }
+      if (!/^[a-zA-Z ]{5,}$/.test(details.fullname)) {
+        validationErrors.push(
+          "Please enter a valid Fullname with at least 6 characters, consisting of letters only."
+        );
+      }
+      if (!/^[a-zA-Z0-9 ]{5,}$/.test(details.description)) {
+        validationErrors.push(
+          "Please provide a description with at least 6 characters, using alphanumeric characters."
+        );
+      }
+      if (!/^\d+$/.test(details.numOfPeople.toString())) {
+        validationErrors.push(
+          "Please enter a valid number for the 'Number of People' field."
+        );
+      }
+      if (!/^\d+$/.test(details.daysOfStaying.toString())) {
+        validationErrors.push(
+          "Please enter a valid number for the 'Days of Staying' field."
+        );
+      }
+    });
+
+    if (validationErrors.length > 0) {
+      validationErrors.forEach((error) => toast.error(error));
       return;
     }
 
+    // If all validations pass, proceed with form submission
     bookingDetails.forEach((details) => createArticles(details));
     toast.success("Article has been Successfully Added");
     router.push("/");
