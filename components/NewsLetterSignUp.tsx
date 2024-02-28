@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function NewsLetterSignUp() {
   return (
     <section className="w-full py-12 md:py-24 lg:py-10 flex flex-col items-center justify-center bg-black border-t border-white">
@@ -25,7 +27,7 @@ export default function NewsLetterSignUp() {
           <p className="text-xs text-gray-500 dark:text-gray-400">
             By signing up, you agree to our
             <span className="underline underline-offset-2">
-              Terms & Conditions
+              <Link href="terms">Terms & Conditions</Link>
             </span>
           </p>
         </div>

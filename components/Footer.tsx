@@ -6,19 +6,19 @@ export default function Footer() {
     <footer className="flex flex-col items-center bg-black p-5">
       <div className="flex    gap-4 mb-4 ">
         <p className="text-sm text-gray-500 cursor-pointer dark:text-gray-400">
-          About
+          <Link href="/about">About</Link>
         </p>
         <p className="text-sm text-gray-500 cursor-pointer dark:text-gray-400">
-          Contact
+          <Link href="/contact">Contact</Link>
         </p>
         <p className="text-sm text-gray-500 cursor-pointer dark:text-gray-400">
           Feedback
         </p>
         <p className="text-sm text-gray-500 cursor-pointer dark:text-gray-400">
-          FAQ
+          <Link href="/faq"> FAQ</Link>
         </p>
         <p className="text-sm text-gray-500 cursor-pointer dark:text-gray-400">
-          Career
+          <Link href="/career">Career</Link>
         </p>
       </div>
       <p className="text-sm text-gray-500 dark:text-gray-400 max-w-[750px] w-full text-center mb-2">

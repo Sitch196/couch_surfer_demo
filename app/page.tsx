@@ -45,7 +45,7 @@ export default function Welcome() {
 
       {showScrollTopButton && (
         <button
-          className="fixed bottom-8 right-8 bg-gray-800 text-white px-4 py-3 rounded-full hover:bg-white hover:text-black"
+          className="fixed bottom-8 right-8 bg-gray-800 text-white px-5 py-3  rounded-full hover:bg-white hover:text-black"
           onClick={handleScrollToTop}
         >
           ↑
