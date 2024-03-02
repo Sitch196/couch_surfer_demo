@@ -52,9 +52,6 @@ export function Navigation() {
         </Link>{" "}
         {isSignedIn ? (
           <div className="cursor-pointer z-20 flex gap-4 ">
-            <p className="text-xl font-bold">
-              <Link href="/dashboard">My Dashboard</Link>
-            </p>
             <UserButton afterSignOutUrl="/" />
           </div>
         ) : (
