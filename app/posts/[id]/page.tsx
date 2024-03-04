@@ -18,11 +18,11 @@ export default function DetailedPage({ params }: BlogDetailsProps) {
   );
 
   return (
-    <div className="flex justify-center h-screen">
+    <div className="flex justify-center h-screen px-4">
       {targetPost?.map((post) => (
         <div
           key={post._id}
-          className="bg-white p-8 sm:h-[500px] rounded-md shadow-md w-full sm:max-w-md md:max-w-lg lg:max-w-4xl max-h-screen overflow-y-auto"
+          className="bg-white p-8 sm:h-[500px]  rounded-md shadow-md w-full sm:max-w-md md:max-w-full lg:max-w-full max-h-screen overflow-y-auto"
         >
           <div className="flex justify-between">
             <div className="flex items-center">
