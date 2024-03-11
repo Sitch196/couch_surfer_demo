@@ -12,7 +12,7 @@ export default function Footer() {
           <Link href="/contact">Contact</Link>
         </p>
         <p className="text-sm text-gray-500 cursor-pointer dark:text-gray-400">
-          Feedback
+          <Link href="/feedback">Feedback</Link>
         </p>
         <p className="text-sm text-gray-500 cursor-pointer dark:text-gray-400">
           <Link href="/faq"> FAQ</Link>

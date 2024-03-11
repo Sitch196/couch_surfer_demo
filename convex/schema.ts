@@ -19,4 +19,7 @@ export default defineSchema({
     postID: v.string(),
     author: v.string(),
   }),
+  feedBacks: defineTable({
+    feedback: v.string(),
+  }),
 });
