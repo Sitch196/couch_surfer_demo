@@ -1,4 +1,3 @@
-// Hero.js
 import React from "react";
 import Image from "next/image";
 import hero from "../assets/heroimage.jpg";
@@ -24,12 +23,12 @@ export default function Hero() {
         </p>
         <div className="flex mt-4 ">
           <Link href="/posts">
-            <button className="bg-black text-white px-6 py-3 rounded-md mr-4">
+            <button className="bg-black text-white px-6 py-3 rounded-md mr-4  hover:bg-white hover:text-black transition duration-500 ease-in-out">
               For Hosts
             </button>
           </Link>
           <Link href="/publish">
-            <button className="bg-black text-white px-6 rounded-md py-3">
+            <button className="bg-black text-white px-6 py-3 rounded-md mr-4  hover:bg-white hover:text-black transition duration-500 ease-in-out">
               For Guests
             </button>
           </Link>

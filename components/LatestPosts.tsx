@@ -26,7 +26,7 @@ export default function LatestPosts() {
                     {post.description}
                   </p>
                   <button
-                    className="mt-4 border border-white py-2 hover:bg-white hover:text-black"
+                    className="mt-4 border rounded-sm border-white py-2 hover:bg-white hover:text-black transition duration-500 ease-in-out"
                     onClick={() => router.push(`/posts/${post._id}`)}
                   >
                     View More
