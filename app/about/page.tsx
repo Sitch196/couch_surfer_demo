@@ -3,7 +3,7 @@ import hero from "../../assets/heroimage.jpg";
 
 export default function Page() {
   return (
-    <div className="container mx-auto bg-[whitemoke] p-4 max-w-screen-md h-screen">
+    <div className="container mx-auto bg-gradient-to-br  from-white via-[#00bfd8] to-[#0083f5] p-4 max-w-screen-md h-screen">
       <p className="text-justify hyphens-auto">
         Welcome to Tbilisi Couch Surfers, your trusted companion in discovering
         the heart of Georgia's capital. We specialize in connecting travelers
@@ -20,7 +20,12 @@ export default function Page() {
         for those seeking not just a place to stay, but a genuine connection to
         Tbilisi's vibrant spirit.
       </p>
-      <Image src={hero} alt="hero image" loading="lazy" />
+      <Image
+        src={hero}
+        alt="hero image"
+        loading="lazy"
+        className="rounded-md"
+      />
     </div>
   );
 }

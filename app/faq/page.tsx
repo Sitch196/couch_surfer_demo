@@ -31,8 +31,8 @@ export default function FAQPage() {
   };
 
   return (
-    <div className="h-screen flex justify-center bg-gray-200">
-      <div className="bg-white p-8 rounded shadow-md md:w-full h-[450px] w-full max-w-screen-lg">
+    <div className="h-screen flex justify-center items-center bg-gray-200">
+      <div className="bg-white p-8 rounded-md shadow-md md:w-full  w-full max-w-screen-lg">
         <h1 className="text-2xl font-bold mb-4">Frequently Asked Questions</h1>
         {faqData.map((faq, index) => (
           <div key={index} className="mb-4">

@@ -71,7 +71,6 @@ export default function Component() {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Validation logic for all fields
     const validationErrors: string[] = [];
     bookingDetails.forEach((details) => {
       if (!/^[a-zA-Z ]{5,}$/.test(details.title)) {
@@ -114,7 +113,7 @@ export default function Component() {
   };
 
   return (
-    <div className="flex items-center justify-center ">
+    <div className="flex items-center justify-center h-screen ">
       <div className="w-[569px] mx-auto  p-6">
         <div>
           <h2 className="text-3xl font-bold">New Booking ✅</h2>

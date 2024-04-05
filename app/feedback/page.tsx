@@ -3,11 +3,8 @@ import { api } from "@/convex/_generated/api";
 import { useMutation } from "convex/react";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-
 import { FiArrowLeft } from "react-icons/fi";
 import Link from "next/link";
-
-// ... (your other imports)
 
 export default function FeedBack() {
   const [feedBack, setFeedback] = useState("");
@@ -24,8 +21,8 @@ export default function FeedBack() {
   };
 
   return (
-    <div className="min-h-screen flex items-start justify-center bg-gray-100">
-      <div className=" relative max-w-md w-full p-6 bg-white rounded-md shadow-md">
+    <div className="min-h-screen flex items-start  justify-center bg-gray-100">
+      <div className=" relative max-w-md w-full  p-6 bg-white rounded-md shadow-md">
         <div className="flex items-center  ">
           <h2 className="text-2xl font-semibold mb-4">Leave Feedback</h2>
           <Link
