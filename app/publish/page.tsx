@@ -113,10 +113,22 @@ export default function Component() {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen ">
+    <div className="flex h-screen ">
       <div className="w-[569px] mx-auto  p-6">
         <div>
-          <h2 className="text-3xl font-bold">New Booking ✅</h2>
+          <div className="flex flex-col gap-1 sm:flex-row sm:items-center">
+            <h2 className="text-3xl font-bold  ">
+              New Booking ✅ <span>/</span>
+            </h2>
+            <div className="flex justify-center items-center">
+              <Link href="/posts">
+                <p className="underline text-xl text-left">
+                  Check Out Articles
+                </p>
+              </Link>{" "}
+            </div>{" "}
+          </div>
+
           <p className="text-gray-500 dark:text-gray-400">
             Enter some details about yourself and hosts will contact you soon
           </p>

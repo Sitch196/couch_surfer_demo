@@ -9,6 +9,7 @@ import Loading from "../Loading";
 import { calculateRelativeTime } from "@/utils/CalculateRelativeTime";
 import { useState } from "react";
 import { FiFilter } from "react-icons/fi";
+import Link from "next/link";
 
 const Page = () => {
   const [sortBy, setSortBy] = useState("new");
@@ -34,9 +35,14 @@ const Page = () => {
       />
 
       <div className="mt-8 mb-4 px-2 w-full flex flex-col sm:flex-row items-center justify-between">
-        <p className="text-xl px-2 font-semibold mb-2 sm:mb-0 sm:mr-2 border-black border-l-[6px] ">
-          Take a look at all the posts here
-        </p>
+        <div className="flex">
+          <p className="text-xl px-2 font-semibold mb-2 sm:mb-0 sm:mr-2 border-black border-l-[6px] ">
+            Take a look at all the posts here <span> /</span>
+          </p>
+          <p className="text-lg underline">
+            <Link href="/publish">Publish article</Link>
+          </p>
+        </div>
         <div className="flex items-center space-x-2">
           <p className="text-sm font-semibold  sm:block">Sort by:</p>
           <FiFilter
