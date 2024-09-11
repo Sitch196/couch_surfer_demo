@@ -106,7 +106,6 @@ export default function Component() {
       return;
     }
 
-    // If all validations pass, proceed with form submission
     bookingDetails.forEach((details) => createArticles(details));
     toast.success("Article has been Successfully Added");
     router.push("/");
