@@ -25,7 +25,7 @@ export default function Footer() {
         "Tbilisi Couch Surfers: Your go-to platform for authentic travel
         experiences in Tbilisi, Georgia. Connect with locals offering free
         accommodations, fostering cultural exchange and creating memorable stays
-        for budget-conscious adventurers."
+        "
       </p>
       <p className="text-xs text-gray-500 dark:text-gray-400 text-center sm:hidden">
         © 2024 Couch Surfers Tbilisi. All rights reserved.
