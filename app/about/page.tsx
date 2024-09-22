@@ -3,8 +3,8 @@ import hero from "../../assets/heroimage.jpg";
 
 export default function Page() {
   return (
-    <div className="container mx-auto bg-gradient-to-br  from-white via-[#00bfd8] to-[#0083f5] p-4 max-w-screen-md h-screen">
-      <p className="text-justify hyphens-auto">
+    <div className="container mx-auto bg-white rounded p-4 max-w-screen-md h-screen shadow-lg">
+      <p className="text-justify hyphens-auto ">
         Welcome to Tbilisi Couch Surfers, your trusted companion in discovering
         the heart of Georgia's capital. We specialize in connecting travelers
         with welcoming locals, offering a unique and authentic stay in Tbilisi.
@@ -12,8 +12,8 @@ export default function Page() {
         the conventional, fostering cultural exchange and creating memorable
         experiences.
       </p>
-      <br />
-      <p className="text-justify hyphens-auto">
+
+      <p className="text-justify hyphens-auto mt-2">
         Our platform enables visitors to find a comfortable couch or spare room
         while immersing themselves in the warmth of Georgian hospitality. With a
         commitment to safety and quality, we take pride in being the best choice
