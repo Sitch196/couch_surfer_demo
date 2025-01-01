@@ -1,7 +1,7 @@
 export default {
   providers: [
     {
-      domain: "https://relative-cow-40.clerk.accounts.dev",
+      domain: process.env.CLERK_DOMAIN,
       applicationID: "convex",
     },
   ],
