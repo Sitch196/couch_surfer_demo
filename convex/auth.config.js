@@ -2,7 +2,7 @@ require("dotenv").config();
 export default {
   providers: [
     {
-      domain: process.env.CLERK_DOMAIN,
+      domain: "https://relative-cow-40.clerk.accounts.dev",
       applicationID: "convex",
     },
   ],
